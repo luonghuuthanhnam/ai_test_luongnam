@@ -45,7 +45,6 @@ if __name__ == "__main__":
         else:
             checking_name = hierarchy_retriever.get_name(checking_id)
         # LOOKUP DATA
-        # hierarchy_retriever.get_parent("/m/01_5g")
 
         print(f"Checking [PARENTS] of [{checking_name}]...")
         s_time = timeit.default_timer()
