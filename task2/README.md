@@ -9,6 +9,6 @@ The test says that I need to identify if a person wearing Helmet and Mark or not
   - Identify Helmet and Mask (MultilClass Image Classification)
   
  First, I build an object detection model to localize the region of HEAD
- Then, Crop the HEAD region\n
- Then, Build an image classification model to identify Helmet and Mask in the before Croped HEAD image\n
- Finally, putting all together\n
+ Then, Crop the HEAD region/n
+ Then, Build an image classification model to identify Helmet and Mask in the before Croped HEAD image/n
+ Finally, putting all together/n
