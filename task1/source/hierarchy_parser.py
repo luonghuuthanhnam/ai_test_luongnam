@@ -10,6 +10,7 @@ class HierarchyRetriever:
         Args:
             preprocessed_data (PreprocessData): object of PreprocessData class
         """
+        self.ROOT = "/m/0bl9f"
         self.preprocessed_data = preprocessed_data
 
     def get_name(self, label_id):
@@ -38,11 +39,10 @@ class HierarchyRetriever:
         """
         parent_ids = self.get_parent(child_class)
         for parent_id in parent_ids:
-            if parent_id != "/m/0bl9f":
-                ancestors.append(parent_id)
-                self.ancestors_recursion(parent_id, ancestors)
-            else:
-                pass
+            if parent_id == self.ROOT:
+                continue
+            ancestors.append(parent_id)
+            self.ancestors_recursion(parent_id, ancestors)
 
     def get_ancestors(self, child_class):
         """
@@ -64,14 +64,13 @@ class HierarchyRetriever:
         """
         siblings = []
         parents = self.get_parent(child_class)
-        print(parents)
-        if "/m/0bl9f" in parents:
-            parents.remove("/m/0bl9f")
+        if self.ROOT in parents:
+            parents.remove(self.ROOT)
         parents_as_set = set(parents)
         for key, val in self.preprocessed_data.pair_dict_hierarchy.items():
             intersection = parents_as_set.intersection(val)
             list_intersection = list(intersection)
-            if list_intersection != []:
+            if list_intersection:
                 siblings.append(key)
         return siblings
 
@@ -81,7 +80,6 @@ class HierarchyRetriever:
         ancestors1_as_set = set(child_1_path)
         intersection = ancestors1_as_set.intersection(child_2_path)
         list_intersection = list(intersection)
-        if list_intersection != []:
+        if list_intersection:
             return True, list_intersection
-        else:
-            return False, []
+        return False, []

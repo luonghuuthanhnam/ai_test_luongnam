@@ -17,7 +17,8 @@ class PreprocessData:
             json_file (str): Class hierarchy Json file path
             csv_file (str): label name and display name csv file path
         """
-        self.json_hierarchy = json.load(open(json_file))
+        with open(json_file, "r") as json_file:
+            self.json_hierarchy = json.load(json_file)
         self.root_class = self.json_hierarchy["LabelName"]
         self.csv_df = pd.read_csv(csv_file)
         self.csv_df = self.csv_df.set_index("LabelName")
@@ -52,14 +53,11 @@ class PreprocessData:
         """
         for iter in json_hierarchy:
             dict_hierarchy[iter["LabelName"]] = {}
-            if "Subcategory" in list(iter.keys()):
-                self.json2dict_hierarchy(
-                    iter["Subcategory"], dict_hierarchy[iter["LabelName"]]
-                )
-            if "Part" in list(iter.keys()):
-                self.json2dict_hierarchy(
-                    iter["Part"], dict_hierarchy[iter["LabelName"]]
-                )
+            for key in ["Subcategory", "Part"]:
+                if key in iter.keys():
+                    self.json2dict_hierarchy(
+                        iter[key], dict_hierarchy[iter["LabelName"]]
+                    )
 
     def make_pair(self, dict_hierarchy, pair_dict_hierarchy, first_classes, parent_key):
         """
@@ -74,19 +72,17 @@ class PreprocessData:
             Each pair [Key - Value] is represent to [Child(single value) - Parents(list)]
         """
         for key, val in dict_hierarchy.items():
-            if key in first_classes and key not in list(pair_dict_hierarchy.keys()):
+            if key in self.dict_hierarchy and key not in pair_dict_hierarchy:
                 pair_dict_hierarchy[key] = []
                 pair_dict_hierarchy[key].append(parent_key)
                 self.make_pair(val, pair_dict_hierarchy, first_classes, key)
             else:
-                if len(val) == 0:
-                    if key not in list(pair_dict_hierarchy.keys()):
+                if not len(val):
+                    if key not in pair_dict_hierarchy:
                         pair_dict_hierarchy[key] = []
-                    else:
-                        pass
                     pair_dict_hierarchy[key].append(parent_key)
                 else:
-                    if key not in list(pair_dict_hierarchy.keys()):
+                    if key not in pair_dict_hierarchy:
                         pair_dict_hierarchy[key] = []
                     pair_dict_hierarchy[key].append(parent_key)
                     self.make_pair(val, pair_dict_hierarchy, first_classes, key)
