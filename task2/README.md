@@ -42,3 +42,6 @@ because the time to do the test is limited, So I choose an fastest way to build 
   <img src="/task2/images/tensor_board_relabel.png" width = 1300> <br />
   # Each Metrics increase 5%->8% accuracy. <br />
   I only relabel half of miss/wrong attributes and get a huge positive impart. So, data is realy importance in Computer Vison or AI field<br />
+  <br /><
+  # Inference
+  Checkout the `helmet_mask_end2end.ipynb` file for Inference with trained weight. But please don't expect to much, because I don't have enough time for find the best hyper parameters.
