@@ -16,4 +16,7 @@ There are 2 steps:
   -- Siblings: `~0.0002s`
   -- Ancestors: `2e-5`
   -- Check Same Ancestors: `2.5e-5`
+<img src="/task1/images/time_consuming.png">
+<img src="/task1/images/time_consuming2.png">
 
+# Feel Free to test it yourself
