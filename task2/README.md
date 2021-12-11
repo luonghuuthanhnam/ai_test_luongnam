@@ -22,26 +22,25 @@ because the time to do the test is limited, So I choose an fastest way to build 
  - FPN: Because we need to detect both small and big object so FPN is make sense
  [Evaluation Metrics]
   - Average Precision/Recall of each small/medium/big object<br />
-  <img src="/task2/images/training_log.png" height = 1000> <br />
+  <img src="/task2/images/training_log.png" height = 1000> <br /><br />
+ # Image Clasification:<br />
+ Helmet and Mask is 2 attribute maybe inside the HeadObject. So this is a multi-label classification.<br />
+ Build a model take the image input, feed to a CNN backbone to get the feature output.<br />
+ At the last layer, instead of using Softmax solve nomal classification probject, we have to choose something like One-vs-rest approach to class multiple classes.<br />
+ [SPECS]<br />
+ - CNN BackBone: Resnet18<br />
+ - Loss function: BCE + One-vs-rest<br />
+ [Evaluation Metrics]<br />
+ - Micro Precision/Recall/F1_Score<br />
+ - Macro Precision/Recall/F1_Score<br />
+ <br /><br /><br />
+ I spent alot of time to checking the data and recognize that the attribute inside data is very bad. A lot of data is mislabel, wrong label, Becase I only have 2 days so I just  relabel half of them, and here is the comparetion between them .<br />
+ [Training with raw datatset]<br />
+ <img src="/task2/images/tensor_board.png" width = 1300> <br /> <br />
+ [Training with relabel dataset]<br />
+ <img src="/task2/images/tensor_board_relabel.png" width = 1300> <br />
+ # Each Metrics increase 5%->8% accuracy. <br />
+ I only relabel half of miss/wrong attributes and get a huge positive impart. So, data is realy importance in Computer Vison or AI field<br />
  <br />
-  # Image Clasification:<br />
-  Helmet and Mask is 2 attribute maybe inside the HeadObject. So this is a multi-label classification.<br />
-  Build a model take the image input, feed to a CNN backbone to get the feature output.<br />
-  At the last layer, instead of using Softmax solve nomal classification probject, we have to choose something like One-vs-rest approach to class multiple classes.<br />
-  [SPECS]<br />
-  - CNN BackBone: Resnet18<br />
-  - Loss function: BCE + One-vs-rest<br />
- [Evaluation Metrics]:<br />
-  - Micro Precision/Recall/F1_Score<br />
-  - Macro Precision/Recall/F1_Score<br />
-  <br /><br /><br />
-  I spent alot of time to checking the data and recognize that the attribute inside data is very bad. A lot of data is mislabel, wrong label, Becase I only have 2 days so I just relabel half of them, and here is the comparetion between them .<br />
-  [Training with raw datatset]<br />
-  <img src="/task2/images/tensor_board.png" width = 1300> <br /> <br />
-  [Training with relabel dataset]<br />
-  <img src="/task2/images/tensor_board_relabel.png" width = 1300> <br />
-  # Each Metrics increase 5%->8% accuracy. <br />
-  I only relabel half of miss/wrong attributes and get a huge positive impart. So, data is realy importance in Computer Vison or AI field<br />
-  <br />
-  # Inference
-  Checkout the `helmet_mask_end2end.ipynb` file for Inference with trained weight. But please don't expect to much, because I don't have enough time for find the best hyper parameters.
+ # Inference
+ Checkout the `helmet_mask_end2end.ipynb` file for Inference with trained weight. Feel free to test of random iamge you have or download on internet, but please don't expect to much, because I don't have enough time for finetune to find the best hyper parameters.
