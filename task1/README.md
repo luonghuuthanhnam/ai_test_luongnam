@@ -6,7 +6,7 @@ Beacuse of call dict to retrieve data is the fastest way, algorithm complexity i
 Each `Pair` is a pair of `Child - [Parents]`
  - By that way, I can get parent of every class directly.<br />
 ## Some child have many parents
-There are some child have many parent, so the Siblings of it is a combination of all chilrent of it's parents.<br />
+There are some child have many parent, so the Siblings of it is a combination of all chilren of it's parents.<br />
 
 # Time consuming:
 There are 2 steps:
