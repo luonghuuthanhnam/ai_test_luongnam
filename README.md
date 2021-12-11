@@ -1,4 +1,4 @@
-# Go to `task1` and `task2` folder to check my work. Thank you for checkout it!.<br /n>
-Feel free to contact me if you have any question.<br /n>
-Email: `luonghuuthanhnam5@gmail.com`<br \n>
+# Go to `task1` and `task2` folder to check my work. Thank you for checkout it!.<br />
+## Feel free to contact me if you have any question. <br />
+Email: `luonghuuthanhnam5@gmail.com`<br />
 LinkedIn: `https://www.linkedin.com/in/luongnam/`
