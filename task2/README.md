@@ -16,21 +16,21 @@ The test says that I need to identify if a person wearing Helmet and Mark or not
 
 # Head Detection
 because the time to do the test is limited, So I choose an fastest way to build an object detection model is FasterRCNN. <br />
-[SPECS]<br />
+## [SPECS]<br />
  - Backbone: Resnet50 (fine tune 3 last layers)
  - RPN
  - FPN: Because we need to detect both small and big object so FPN is make sense
- [Evaluation Metrics]
+ ## [Evaluation Metrics]
   - Average Precision/Recall of each small/medium/big object<br />
   <img src="/task2/images/training_log.png" height = 1000> <br /><br />
  # Image Clasification:<br />
  Helmet and Mask is 2 attribute maybe inside the HeadObject. So this is a multi-label classification.<br />
  Build a model take the image input, feed to a CNN backbone to get the feature output.<br />
- At the last layer, instead of using Softmax solve nomal classification probject, we have to choose something like One-vs-rest approach to class multiple classes.<br />
- [SPECS]<br />
- - CNN BackBone: Resnet18<br />
+ At the last layer, instead of using Softmax solve nomal classification probject, we have to choose something like One-vs-rest approach to class multiple classes. <br />
+ ## [SPECS] <br />
+ - CNN BackBone: Resnet18
  - Loss function: BCE + One-vs-rest<br />
- [Evaluation Metrics]<br />
+ ## [Evaluation Metrics]<br />
  - Micro Precision/Recall/F1_Score<br />
  - Macro Precision/Recall/F1_Score<br />
  <br /><br /><br />
